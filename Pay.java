@@ -1,39 +1,55 @@
 public class Pay {
 
-    private int weeklyPay;
-    private double basicHours;
+    private int dailyWage;
+    private double workHours;
     private double hourlyRate;
+    private double weeklyPay;
     private double monthlyPay;
     private double annualPay;
-    private int goal;
+    private int savingsGoal;
     private double yearsGoal;
 
-    public void setWeeklyPay(int weeklyPay) {
+    public void setDailyWage(int dailyWage) {
 
-        this.weeklyPay = weeklyPay;
+        this.dailyWage = dailyWage;
     }
 
-    public void setBasicHours(double basicHours) {
+    public void setWorkHours(double workHours) {
 
-        this.basicHours = basicHours;
+        this.workHours = workHours;
     }
 
-    public void setGoal(int goal) {
+    public void setGoal(int savingsGoal) {
 
-        this.goal = goal;
+        this.savingsGoal = savingsGoal;
     }
 
     public void compute() {
 
-        monthlyPay = weeklyPay*4.33;
-        annualPay = weeklyPay*52;
-        hourlyRate = weeklyPay/basicHours;
-        yearsGoal = goal/annualPay;
+        weeklyPay = dailyWage * 5;
+        monthlyPay = weeklyPay * 4.33;
+        annualPay = dailyWage * 260;
+        hourlyRate = dailyWage / workHours;
+    }
+
+    public double getHourlyRate() {
+
+        return hourlyRate;
+    }
+
+    public double getDailyPayTax() {
+
+        return dailyWage - (0.35 * dailyWage);
+    }
+
+    public double getWeeklyPay() {
+
+        return weeklyPay;
     }
 
     public double getWeeklyPayTax() {
 
-        return 500+(0.52*(weeklyPay-577));
+        return weeklyPay - (0.35 * weeklyPay);
     }
 
     public double getMonthlyPay() {
@@ -43,7 +59,7 @@ public class Pay {
 
     public double getMonthlyPayTax() {
 
-        return 2165+(0.52*(monthlyPay-2500));
+        return monthlyPay - (0.35 * monthlyPay);
     }
 
     public double getAnnualPay() {
@@ -53,13 +69,9 @@ public class Pay {
 
     public double getAnnualPayTax() {
 
-        return 26000+(0.52*(annualPay-30000));
-    }
-
-    public double getHourlyRate() {
-
-        return hourlyRate;
-    }
+        yearsGoal = savingsGoal / (annualPay - (0.35 * annualPay));
+        return annualPay - (0.35 * annualPay);
+    }    
 
     public double getYearsGoal() {
 

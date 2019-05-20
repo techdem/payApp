@@ -9,6 +9,8 @@ public class PayApp {
 
         int dailyWage;
         double workHours;
+        int numberOfDays;
+        double taxPercentage;
         int savingsGoal;
 
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MMMM/yyyy");
@@ -17,20 +19,29 @@ public class PayApp {
 
         Scanner userInput = new Scanner(System.in);
 
-        System.out.println("Please enter daily pay rate: ");
+        System.out.println("Enter daily pay rate: ");
         dailyWage = userInput.nextInt();
 
-        System.out.println("Now enter the number of hours per day: ");
+        System.out.println("Enter the number of work hours per day: ");
         workHours = userInput.nextDouble();
 
-        System.out.println("Finally enter the saving goal: ");
+        System.out.println("Enter the number of work days per year: ");
+        numberOfDays = userInput.nextInt();
+
+        System.out.println("Enter the tax percentage: ");
+        taxPercentage = userInput.nextDouble();
+
+        System.out.println("Enter the saving goal: ");
         savingsGoal = userInput.nextInt();
 
-        System.out.printf("\nValues given:\n\n\tDaily Pay Rate: %d\n\tWork Hours: %.2f\n\tGoal: %,d\n\n",
-                dailyWage, workHours, savingsGoal);
+        System.out.printf("\nValues given:\n\n\tDaily Pay Rate: %d\n\tWork Hours: %.2f\n\t" +
+                        "Days per year: %d\n\tTax percentage: %.2f\n\tGoal: %,d\n\n",
+                        dailyWage, workHours, numberOfDays, taxPercentage, savingsGoal);
 
         myPay.setDailyWage(dailyWage);
         myPay.setWorkHours(workHours);
+        myPay.setNumberOfDays(numberOfDays);
+        myPay.setTaxPercentage(taxPercentage);
         myPay.setGoal(savingsGoal);
 
         myPay.compute();

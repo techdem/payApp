@@ -2,11 +2,14 @@ public class Pay {
 
     private int dailyWage;
     private double workHours;
+    private int numberOfDays;
+    private double taxPercentage;
+    private int savingsGoal;
+
     private double hourlyRate;
     private double weeklyPay;
     private double monthlyPay;
     private double annualPay;
-    private int savingsGoal;
     private double yearsGoal;
 
     public void setDailyWage(int dailyWage) {
@@ -19,6 +22,16 @@ public class Pay {
         this.workHours = workHours;
     }
 
+    public void setNumberOfDays(int numberOfDays) {
+
+        this.numberOfDays = numberOfDays;
+    }
+
+    public void setTaxPercentage(double taxPercentage) {
+
+        this.taxPercentage = taxPercentage / 100;
+    }
+
     public void setGoal(int savingsGoal) {
 
         this.savingsGoal = savingsGoal;
@@ -26,9 +39,9 @@ public class Pay {
 
     public void compute() {
 
-        weeklyPay = dailyWage * 5;
-        monthlyPay = weeklyPay * 4.33;
-        annualPay = dailyWage * 260;
+        annualPay = dailyWage * numberOfDays;
+        monthlyPay = annualPay / 12;
+        weeklyPay = annualPay / 52;
         hourlyRate = dailyWage / workHours;
     }
 
@@ -39,7 +52,7 @@ public class Pay {
 
     public double getDailyPayTax() {
 
-        return dailyWage - (0.35 * dailyWage);
+        return dailyWage - (taxPercentage * dailyWage);
     }
 
     public double getWeeklyPay() {
@@ -49,7 +62,7 @@ public class Pay {
 
     public double getWeeklyPayTax() {
 
-        return weeklyPay - (0.35 * weeklyPay);
+        return weeklyPay - (taxPercentage * weeklyPay);
     }
 
     public double getMonthlyPay() {
@@ -59,7 +72,7 @@ public class Pay {
 
     public double getMonthlyPayTax() {
 
-        return monthlyPay - (0.35 * monthlyPay);
+        return monthlyPay - (taxPercentage * monthlyPay);
     }
 
     public double getAnnualPay() {
@@ -69,12 +82,11 @@ public class Pay {
 
     public double getAnnualPayTax() {
 
-        yearsGoal = savingsGoal / (annualPay - (0.35 * annualPay));
-        return annualPay - (0.35 * annualPay);
+        return annualPay - (taxPercentage * annualPay);
     }    
 
     public double getYearsGoal() {
 
-        return yearsGoal;
+        return savingsGoal / getAnnualPayTax();
     }
 }

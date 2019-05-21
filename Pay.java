@@ -5,6 +5,7 @@ public class Pay {
     private int numberOfDays;
     private double taxPercentage;
     private int savingsGoal;
+    private double savingsPercentage;
 
     private double hourlyRate;
     private double weeklyPay;
@@ -32,9 +33,14 @@ public class Pay {
         this.taxPercentage = taxPercentage / 100;
     }
 
-    public void setGoal(int savingsGoal) {
+    public void setSavingsGoal(int savingsGoal) {
 
         this.savingsGoal = savingsGoal;
+    }
+
+    public void setSavingsPercentage(double savingsPercentage) {
+
+        this.savingsPercentage = savingsPercentage / 100;
     }
 
     public void compute() {
@@ -83,10 +89,15 @@ public class Pay {
     public double getAnnualPayTax() {
 
         return annualPay - (taxPercentage * annualPay);
-    }    
+    }
 
-    public double getYearsGoal() {
+    public double getSavingsPerMonth() {
 
-        return savingsGoal / getAnnualPayTax();
+        return savingsPercentage * getMonthlyPay();
+    }
+
+    public double getMonthsGoal() {
+
+        return savingsGoal / getSavingsPerMonth();
     }
 }

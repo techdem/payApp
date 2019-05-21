@@ -42,12 +42,7 @@ public class PayApp {
                         "Days per year: %d\n\tTax percentage: %.2f\n\tGoal: %,d\n\tSaving percentage: %.2f\n\n",
                         dailyWage, workHours, numberOfDays, taxPercentage, savingsGoal, savingsPercentage);
 
-        myPay.setDailyWage(dailyWage);
-        myPay.setWorkHours(workHours);
-        myPay.setNumberOfDays(numberOfDays);
-        myPay.setTaxPercentage(taxPercentage);
-        myPay.setSavingsGoal(savingsGoal);
-        myPay.setSavingsPercentage(savingsPercentage);
+        myPay.setValues(dailyWage, workHours, numberOfDays, taxPercentage, savingsGoal, savingsPercentage);
 
         myPay.compute();
 

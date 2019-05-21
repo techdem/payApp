@@ -11,35 +11,14 @@ public class Pay {
     private double weeklyPay;
     private double monthlyPay;
     private double annualPay;
-    private double yearsGoal;
 
-    public void setDailyWage(int dailyWage) {
-
+    public void setValues(int dailyWage, double workHours, int numberOfDays,
+                            double taxPercentage, int savingsGoal, double savingsPercentage) {
         this.dailyWage = dailyWage;
-    }
-
-    public void setWorkHours(double workHours) {
-
         this.workHours = workHours;
-    }
-
-    public void setNumberOfDays(int numberOfDays) {
-
         this.numberOfDays = numberOfDays;
-    }
-
-    public void setTaxPercentage(double taxPercentage) {
-
         this.taxPercentage = taxPercentage / 100;
-    }
-
-    public void setSavingsGoal(int savingsGoal) {
-
         this.savingsGoal = savingsGoal;
-    }
-
-    public void setSavingsPercentage(double savingsPercentage) {
-
         this.savingsPercentage = savingsPercentage / 100;
     }
 
